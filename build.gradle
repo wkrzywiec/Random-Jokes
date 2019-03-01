@@ -15,5 +15,6 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
