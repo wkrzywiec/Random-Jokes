@@ -1,6 +1,5 @@
 package com.wkrzywiec.medium.periodicquotes;
 
-import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
 import org.slf4j.Logger;
@@ -25,14 +24,15 @@ public class PeriodicQuotesApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		LOG.info("Test");
+		LOG.info("\n\n\n\n\t\t\t ---------  PeriodicQuotesApplication is up and running --------- \n\n");
 
-		Flowable.just("Hello world").subscribe(System.out::println);
 
 		Observable.interval(2, TimeUnit.SECONDS, Schedulers.io())
 				.observeOn(Schedulers.newThread())
-				.subscribe(s -> LOG.info("Task"));
+				.subscribe(s -> LOG.info("\n\n\t\t\t Task \n\n"));
 
 		Thread.sleep(10000);
+
+        LOG.info("\n\n\t\t\t ---------  PeriodicQuotesApplication ends its work --------- ");
 	}
 }
