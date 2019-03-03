@@ -14,22 +14,22 @@ import java.util.concurrent.TimeUnit;
 
 
 @SpringBootApplication
-public class PeriodicQuotesApplication implements CommandLineRunner {
+public class RandomJokesApplication implements CommandLineRunner {
 
 	private static Logger LOG = LoggerFactory
-			.getLogger(PeriodicQuotesApplication.class);
+			.getLogger(RandomJokesApplication.class);
 
 	@Autowired
 	private JokesService jokesService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(PeriodicQuotesApplication.class, args);
+		SpringApplication.run(RandomJokesApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
 
-		LOG.info("\n\n\n\n\t\t\t ---------  PeriodicQuotesApplication is up and running --------- \n\n");
+		LOG.info("\n\n\n\n\t\t\t ---------  RandomJokesApplication is up and running --------- \n\n");
 
 		jokesService.getRandomChuckNorrisJoke()
 				.subscribe(result -> LOG.info("\n\n\n\t\t\t {} \n\n", result));
@@ -40,7 +40,7 @@ public class PeriodicQuotesApplication implements CommandLineRunner {
 
 		Thread.sleep(10000);
 
-        LOG.info("\n\n\t\t\t ---------  PeriodicQuotesApplication ends its work --------- ");
+        LOG.info("\n\n\t\t\t ---------  RandomJokesApplication ends its work --------- ");
 
 
 	}
