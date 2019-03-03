@@ -28,8 +28,7 @@ public class JokesService {
     public Observable<String> getRandomChuckNorrisJoke(){
 
         return chuckNorrisJokesApi.randomJoke()
-                .map(ChuckNorrisJoke::getValue)
-                .map(ChuckNorrisJokeValue::getJoke);
+                .map(respond -> respond.getValue().getJoke());
 
     }
 }

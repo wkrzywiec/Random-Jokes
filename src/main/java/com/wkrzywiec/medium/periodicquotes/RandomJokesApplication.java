@@ -31,12 +31,12 @@ public class RandomJokesApplication implements CommandLineRunner {
 
 		LOG.info("\n\n\n\n\t\t\t ---------  RandomJokesApplication is up and running --------- \n\n");
 
-		jokesService.getRandomChuckNorrisJoke()
-				.subscribe(result -> LOG.info("\n\n\n\t\t\t {} \n\n", result));
 
 		Observable.interval(2, TimeUnit.SECONDS, Schedulers.io())
 				.observeOn(Schedulers.newThread())
-				.subscribe(s -> LOG.info("\n\n\t\t\t Task \n\n"));
+				.subscribe(s -> jokesService.getRandomChuckNorrisJoke()
+										.doOnError(error -> LOG.info(error.toString()))
+										.subscribe(result -> LOG.info("\n\n\n\t\t\t {} \n\n", result)));
 
 		Thread.sleep(10000);
 
