@@ -34,9 +34,10 @@ public class RandomJokesApplication implements CommandLineRunner {
 
 		Observable.interval(2, TimeUnit.SECONDS, Schedulers.io())
 				.observeOn(Schedulers.newThread())
-				.subscribe(s -> jokesService.getRandomChuckNorrisJoke()
-										.doOnError(error -> LOG.info(error.toString()))
-										.subscribe(result -> LOG.info("\n\n\n\t\t\t {} \n\n", result)));
+				.map(tick -> jokesService.getRandomChuckNorrisJoke())
+				.doOnError(error -> LOG.info(error.toString()))
+				.retry()
+				.subscribe(jokeObservable -> jokeObservable.subscribe(joke -> LOG.info("\n\n\n\t\t\t {} \n\n", joke)));
 
 		Thread.sleep(10000);
 
