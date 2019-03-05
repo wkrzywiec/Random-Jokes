@@ -1,7 +1,5 @@
 package com.wkrzywiec.medium.periodicquotes.service;
 
-import com.wkrzywiec.medium.periodicquotes.model.ChuckNorrisJoke;
-import com.wkrzywiec.medium.periodicquotes.model.ChuckNorrisJokeValue;
 import com.wkrzywiec.medium.periodicquotes.retrofit.ChuckNorrisJokesApi;
 import org.springframework.stereotype.Service;
 import retrofit2.Retrofit;
